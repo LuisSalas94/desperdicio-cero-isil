@@ -4,6 +4,7 @@ import { FormsModule, NgForm } from '@angular/forms';
 import { EmpresaService } from '../../services/empresa.service';
 import Swal from 'sweetalert2';
 import { CommonModule } from '@angular/common';
+import * as Aos from 'aos';
 
 @Component({
   selector: 'app-negocio',
@@ -28,6 +29,7 @@ export class NegocioComponent implements OnInit {
   constructor(private service: EmpresaService) {}
 
   ngOnInit(): void {
+    Aos.init();
     this.service.findAll().subscribe((AllEmpresas) => {
       console.log('ALl Empresas: ', AllEmpresas);
       this.empresas = AllEmpresas;
