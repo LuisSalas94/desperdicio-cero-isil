@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable, map, tap, catchError, throwError } from 'rxjs';
 
@@ -8,6 +8,9 @@ import { Observable, map, tap, catchError, throwError } from 'rxjs';
 })
 export class AuthService {
   private baseUrl = 'http://localhost:8080/api/auth';
+
+  /* New Implementation */
+  authChanged = new EventEmitter<Boolean>();
 
   constructor(private http?: HttpClient, private router?: Router) {}
 
@@ -24,6 +27,8 @@ export class AuthService {
         map((response) => {
           if (response && response.token) {
             localStorage.setItem('token', response.token);
+            /* New Implementation */
+            this.authChanged.emit(true);
             return response;
           } else {
             throw new Error(
@@ -49,6 +54,8 @@ export class AuthService {
 
   logout() {
     localStorage.removeItem('token');
+    /* New Implementation */
+    this.authChanged.emit(false);
     this.router?.navigate(['/login']);
   }
 
