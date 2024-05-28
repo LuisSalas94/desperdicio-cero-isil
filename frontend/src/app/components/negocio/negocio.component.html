@@ -8,7 +8,9 @@
 >
   <div class="col-md-4">
     <form (ngSubmit)="onCreate()">
-      <h2 class="mb-4 text-center">Inscriba su Empresa</h2>
+      <h2 class="mb-4 text-center">
+        {{ id > 0 ? "Actualize" : "Inscriba" }} su Empresa
+      </h2>
       <div class="form-group">
         <label for="nombreEmpresa">Nombre de la Empresa</label>
         <input
