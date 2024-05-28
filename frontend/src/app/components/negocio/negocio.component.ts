@@ -6,11 +6,12 @@ import Swal from 'sweetalert2';
 import { CommonModule } from '@angular/common';
 import * as Aos from 'aos';
 import { ActivatedRoute, RouterLink } from '@angular/router';
+import { NegocioContentComponent } from './negocio-content/negocio-content.component';
 
 @Component({
   selector: 'app-negocio',
   standalone: true,
-  imports: [FormsModule, CommonModule, RouterLink],
+  imports: [FormsModule, CommonModule, RouterLink, NegocioContentComponent],
   templateUrl: './negocio.component.html',
   styleUrl: './negocio.component.css',
 })
