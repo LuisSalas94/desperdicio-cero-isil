@@ -240,8 +240,28 @@
           [ngModelOptions]="{ standalone: true }"
         />
       </div>
-      <button type="submit" class="btn btn-outline-primary mt-4 w-100">
+      <!--    <button
+        type="submit"
+        class="btn btn-outline-primary mt-4 w-100"
+        (click)="update()"
+      >
+
+        {{ id > 0 ? "Actualizar" : "Regístrate" }}
+      </button> -->
+      <button
+        type="submit"
+        class="btn btn-outline-primary mt-4 w-100"
+        *ngIf="id === 0"
+      >
         Regístrate
+      </button>
+      <button
+        type="button"
+        class="btn btn-outline-primary mt-4 w-100"
+        *ngIf="id > 0"
+        (click)="update(id, empresa)"
+      >
+        Actualizar
       </button>
     </form>
   </div>
@@ -254,9 +274,9 @@
       <tr>
         <th>Nombre</th>
         <th>Dirección</th>
-
         <th>Horario</th>
         <th>Tipo</th>
+        <th>Accion</th>
         <th>Accion</th>
         <th>Detalles</th>
       </tr>
@@ -280,7 +300,6 @@
         </td>
         <td>
           <p class="fw-normal mb-1">{{ empresa.direccion }}</p>
-          <!-- <p class="text-muted mb-0">IT department</p> -->
         </td>
         <td>
           <p class="badge bg-warning text-dark mb-1">{{ empresa.horario }}</p>
@@ -297,9 +316,14 @@
           </button>
         </td>
         <td>
-          <!-- <button type="button" class="btn btn-link btn-sm btn-rounded">
-            Ver
-          </button> -->
+          <button
+            class="btn btn-outline-info btn-sm"
+            [routerLink]="['/negocio/edit', empresa.id]"
+          >
+            Actualizar
+          </button>
+        </td>
+        <td>
           <button class="btn btn-outline-primary btn-sm">Ver</button>
         </td>
       </tr>

@@ -27,6 +27,22 @@ export class EmpresaService {
     });
   }
 
+  findById(id: number): Observable<Empresa> {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.get<Empresa>(`${BASIC_URL}/api/empresas/${id}`, {
+      headers,
+    });
+  }
+
+  update(id: number, empresa: Empresa): Observable<Empresa> {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.put<Empresa>(`${BASIC_URL}/api/empresas/${id}`, empresa, {
+      headers,
+    });
+  }
+
   findAll(): Observable<Empresa[]> {
     const token = localStorage.getItem('token');
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);

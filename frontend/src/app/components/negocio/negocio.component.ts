@@ -5,11 +5,12 @@ import { EmpresaService } from '../../services/empresa.service';
 import Swal from 'sweetalert2';
 import { CommonModule } from '@angular/common';
 import * as Aos from 'aos';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-negocio',
   standalone: true,
-  imports: [FormsModule, CommonModule],
+  imports: [FormsModule, CommonModule, RouterLink],
   templateUrl: './negocio.component.html',
   styleUrl: './negocio.component.css',
 })
@@ -26,13 +27,27 @@ export class NegocioComponent implements OnInit {
 
   empresas: Empresa[] = [];
 
-  constructor(private service: EmpresaService) {}
+  id: number = 0;
+
+  constructor(private service: EmpresaService, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
     Aos.init();
     this.service.findAll().subscribe((AllEmpresas) => {
       console.log('ALl Empresas: ', AllEmpresas);
       this.empresas = AllEmpresas;
+    });
+
+    //Get Empresa ID
+    this.route.paramMap.subscribe((params) => {
+      const id: number = +(params.get('id') || '0');
+      if (id > 0) {
+        this.service.findById(id).subscribe((res) => {
+          this.empresa = res;
+          this.id = res.id!;
+          console.log('Final ID :', this.id);
+        });
+      }
     });
   }
 
@@ -81,5 +96,38 @@ export class NegocioComponent implements OnInit {
         });
       }
     );
+  }
+
+  update(id: number, empresa: Empresa) {
+    this.service.update(id, empresa).subscribe(
+      (res) => {
+        this.empresa = res;
+        Swal.fire({
+          title: 'Empresa Actualizada',
+          text: 'Empresa ' + this.empresa.nombre + ' actualizada con éxito',
+          icon: 'success',
+        });
+        this.service.findAll().subscribe((empresas) => {
+          this.empresas = empresas;
+        });
+        this.resetEmpresa();
+      },
+      (error) => {
+        console.log('Error: ', error);
+      }
+    );
+  }
+
+  resetEmpresa() {
+    this.empresa = {
+      nombre: '',
+      direccion: '',
+      horario: '',
+      email: '',
+      telefono: '',
+      tipo: '',
+      logo: '',
+    };
+    this.id = 0;
   }
 }

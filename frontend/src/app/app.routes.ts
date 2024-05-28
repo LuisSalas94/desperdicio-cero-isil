@@ -15,5 +15,6 @@ export const routes: Routes = [
   { path: 'nosotros', component: NosotrosComponent },
   { path: 'usuario', component: UsuarioComponent },
   { path: 'negocio', component: NegocioComponent },
+  { path: 'negocio/edit/:id', component: NegocioComponent },
   { path: 'shopping', component: ShoppingComponent },
 ];
