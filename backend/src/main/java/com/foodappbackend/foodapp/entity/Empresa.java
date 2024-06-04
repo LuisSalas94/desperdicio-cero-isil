@@ -1,9 +1,15 @@
 package com.foodappbackend.foodapp.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Data
@@ -40,5 +46,16 @@ public class Empresa {
 
     @Column(nullable = false)
     private String logo;
+
+    @OneToMany(mappedBy = "empresa", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Producto> productos = new ArrayList<>();
+
+//    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "empresa")
+//     @JsonIgnoreProperties("empresa")
+//    List<Producto> productos = new ArrayList<>();
+
+//    @OneToMany(cascade = CascadeType.ALL, mappedBy = "empresa")
+//    @JsonIgnore
+//    List<Producto> productos = new ArrayList<>();
 
 }
