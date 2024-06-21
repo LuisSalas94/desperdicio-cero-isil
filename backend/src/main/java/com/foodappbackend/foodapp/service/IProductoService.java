@@ -5,7 +5,13 @@ import com.foodappbackend.foodapp.entity.Producto;
 import java.util.List;
 
 public interface IProductoService {
+    Producto save(Producto producto);
 
-    Producto save(Long empresaId, Producto producto);
+    List<Producto> findByEmpresaId(Long id);
 
+    Producto findById(Long id);
+
+    Producto updateProducto(Producto producto);
+
+    void deleteById(Long id);
 }

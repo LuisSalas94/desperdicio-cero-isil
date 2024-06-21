@@ -47,15 +47,8 @@ public class Empresa {
     @Column(nullable = false)
     private String logo;
 
-    @OneToMany(mappedBy = "empresa", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "empresa", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    @JsonManagedReference
     private List<Producto> productos = new ArrayList<>();
-
-//    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "empresa")
-//     @JsonIgnoreProperties("empresa")
-//    List<Producto> productos = new ArrayList<>();
-
-//    @OneToMany(cascade = CascadeType.ALL, mappedBy = "empresa")
-//    @JsonIgnore
-//    List<Producto> productos = new ArrayList<>();
 
 }
