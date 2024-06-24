@@ -3,6 +3,7 @@ import { AuthService } from '../../services/auth.service';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import Swal from 'sweetalert2';
+import { CompraService } from '../../services/compra.service';
 
 @Component({
   selector: 'app-navbar',
@@ -12,21 +13,23 @@ import Swal from 'sweetalert2';
   styleUrl: './navbar.component.css',
 })
 export class NavbarComponent implements OnInit {
-  /* New Implementation */
   isLoggedIn: boolean = false;
 
-  constructor(private authService: AuthService) {}
-
-  /* New Implementation */
-  /*   ngOnInit(): void {
-    this.isLoggedIn = this.authService.isAuthenticated();
-  } */
+  constructor(
+    private authService: AuthService,
+    private compraService: CompraService
+  ) {}
 
   ngOnInit(): void {
     this.isLoggedIn = this.authService.isAuthenticated();
     this.authService.authChanged.subscribe((state: boolean) => {
       this.isLoggedIn = state;
     });
+
+    console.log(
+      'Compra Service, length of compras: ',
+      this.compraService.getComprasLength()
+    );
   }
 
   logout(): void {
@@ -36,7 +39,6 @@ export class NavbarComponent implements OnInit {
       icon: 'info',
     });
     this.authService.logout();
-    /* New Implementation */
     this.isLoggedIn = false;
   }
 }

@@ -5,6 +5,7 @@
   class="container mt-5 mb-5 d-flex justify-content-center"
   data-aos="fade-right"
   data-aos-duration="1000"
+  *ngIf="!userPermission"
 >
   <div class="col-md-4">
     <form (ngSubmit)="onCreate()">
@@ -118,8 +119,8 @@
         <th>Horario</th>
         <th>Tipo</th>
         <th>Accion</th>
-        <th>Accion</th>
-        <th>Detalles</th>
+        <th *ngIf="!userPermission">Accion</th>
+        <th *ngIf="!userPermission">Detalles</th>
       </tr>
     </thead>
     <tbody *ngFor="let empresa of empresas">
@@ -148,24 +149,32 @@
         <td>
           <p class="badge bg-primary text-s mb-1">{{ empresa.tipo }}</p>
         </td>
-        <td>
+        <td *ngIf="!userPermission">
           <button
             class="btn btn-outline-danger btn-sm mb-1"
             (click)="onDelete(empresa.id!)"
           >
+            <i class="bi bi-trash me-1"></i>
             Eliminar
           </button>
         </td>
-        <td>
+        <td *ngIf="!userPermission">
           <button
             class="btn btn-outline-info btn-sm"
             [routerLink]="['/negocio/edit', empresa.id]"
           >
+            <i class="bi bi-pencil me-1"></i>
             Actualizar
           </button>
         </td>
         <td>
-          <button class="btn btn-outline-primary btn-sm">Ver</button>
+          <button
+            class="btn btn-outline-primary btn-sm"
+            [routerLink]="['/empresa/detalles', empresa.id]"
+          >
+            <i class="bi bi-info-circle me-1"></i>
+            Detalles
+          </button>
         </td>
       </tr>
     </tbody>

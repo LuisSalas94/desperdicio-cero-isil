@@ -7,6 +7,7 @@ import { CommonModule } from '@angular/common';
 import * as Aos from 'aos';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { NegocioContentComponent } from './negocio-content/negocio-content.component';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-negocio',
@@ -24,13 +25,21 @@ export class NegocioComponent implements OnInit {
     telefono: '',
     tipo: '',
     logo: '',
+    productos: [],
   };
 
   empresas: Empresa[] = [];
 
   id: number = 0;
 
-  constructor(private service: EmpresaService, private route: ActivatedRoute) {}
+  adminPermission: boolean = false;
+  userPermission: boolean = false;
+
+  constructor(
+    private service: EmpresaService,
+    private route: ActivatedRoute,
+    private userService: UserService
+  ) {}
 
   ngOnInit(): void {
     Aos.init();
@@ -39,7 +48,6 @@ export class NegocioComponent implements OnInit {
       this.empresas = AllEmpresas;
     });
 
-    //Get Empresa ID
     this.route.paramMap.subscribe((params) => {
       const id: number = +(params.get('id') || '0');
       if (id > 0) {
@@ -50,6 +58,17 @@ export class NegocioComponent implements OnInit {
         });
       }
     });
+
+    const userName = this.userService.getUsername();
+    console.log('Username from NEGOCION COMPONENT:', userName);
+    if (userName && userName.length > 0) {
+      const firstLetter = userName.charAt(0).toLowerCase();
+      if (firstLetter === 'u') {
+        this.userPermission = true;
+      } else if (firstLetter === 'a') {
+        this.adminPermission = true;
+      }
+    }
   }
 
   onCreate() {
@@ -69,6 +88,7 @@ export class NegocioComponent implements OnInit {
           telefono: '',
           tipo: '',
           logo: '',
+          productos: [],
         };
         this.service.findAll().subscribe((empresas) => {
           this.empresas = empresas;
@@ -128,6 +148,7 @@ export class NegocioComponent implements OnInit {
       telefono: '',
       tipo: '',
       logo: '',
+      productos: [],
     };
     this.id = 0;
   }
