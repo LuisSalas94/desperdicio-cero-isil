@@ -1,6 +1,7 @@
 package com.foodappbackend.foodapp.controller;
 
 import com.foodappbackend.foodapp.entity.Empresa;
+import com.foodappbackend.foodapp.entity.Producto;
 import com.foodappbackend.foodapp.service.IEmpresaService;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,4 +50,5 @@ public class EmpresaController {
         empresaService.deleteById(id);
         return new ResponseEntity<>("Empresa was deleted successfully", HttpStatus.OK);
     }
+
 }

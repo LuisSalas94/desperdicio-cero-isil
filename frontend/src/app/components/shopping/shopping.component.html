@@ -13,7 +13,7 @@
                   <div
                     class="d-flex justify-content-between align-items-center mb-5"
                   >
-                    <h1 class="fw-bold mb-0 text-black">Shopping Cart</h1>
+                    <h1 class="fw-bold mb-0 text-black">Carrito de Compras</h1>
                     <h6 class="mb-0 text-muted">
                       {{ compras.length }}
                       {{ compras.length === 1 ? "producto" : "productos" }}
@@ -28,7 +28,7 @@
                   >
                     <div class="col-md-2 col-lg-2 col-xl-2">
                       <img
-                        src="https://images.unsplash.com/photo-1605291535126-2d71fea483c1?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                        [src]="getImagenProducto(compra.tipoProducto)"
                         class="img-fluid rounded-3"
                         alt="Cotton T-shirt"
                       />
@@ -84,7 +84,7 @@
                     <h6 class="mb-0">
                       <button
                         type="button"
-                        class="btn btn-outline-dark"
+                        class="btn btn-outline-secondary"
                         [routerLink]="['/empresa']"
                       >
                         <i class="bi bi-arrow-left-circle me-2"></i> Volver
@@ -92,7 +92,7 @@
 
                       <button
                         type="button"
-                        class="btn btn-outline-dark mx-2"
+                        class="btn btn-outline-secondary mx-2"
                         (click)="clearCart()"
                       >
                         <i class="bi bi-trash me-2"></i> Vaciar carrito
@@ -103,15 +103,19 @@
               </div>
               <div class="col-lg-4 bg-grey">
                 <div class="p-5">
-                  <h3 class="fw-bold mb-5 mt-2 pt-1">Summary</h3>
+                  <h3 class="fw-bold mb-5 mt-2 pt-1">Resumen</h3>
                   <hr class="my-4" />
 
                   <div class="d-flex justify-content-between mb-5">
-                    <h5 class="text-uppercase">Total price</h5>
+                    <h5 class="text-uppercase">Precio total</h5>
                     <h5>S/ {{ totalPrice }}</h5>
                   </div>
 
-                  <button type="button" class="btn btn-outline-dark">
+                  <button
+                    type="button"
+                    class="btn btn-outline-secondary"
+                    (click)="proceedToPayment()"
+                  >
                     <i class="bi bi-cash"></i> Continuar con el pago
                   </button>
                 </div>

@@ -1,33 +1,55 @@
+/* Estilos para el cuerpo y html */
 body,
 html {
   height: 100%;
 }
 
-.custom-register {
+/* Estilos para listas */
+ul,
+ol {
+  list-style-type: none;
+  padding: 0.2;
+  margin: 0.2;
 }
 
-/* .hero {
-  height: 60vh;
+/* Estilos para tarjetas (card) */
+.card {
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 70%;
 }
 
-.values {
-  height: 60vh;
-} */
-
-/* .custom-hero {
-  height: 70vh;
+.card-img-top {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
 }
 
-.custom-value {
-  height: 60vh;
+.card-body {
+  padding: 1.25rem;
 }
- */
+
+.card-title {
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+.card-text {
+  color: #6c757d;
+}
+
+.badge {
+  font-size: 0.875rem;
+}
+
+/* Estilos para diferentes tamaños de pantalla */
 @media (min-width: 1025px) {
   .h-custom {
     height: 100vh !important;
   }
 }
 
+/* Estilos para la tarjeta de registro */
 .card-registration .select-input.form-control[readonly]:not([disabled]) {
   font-size: 1rem;
   line-height: 2.15;
@@ -57,15 +79,18 @@ html {
   }
 }
 
+/* Estilos para el wrapper y contenido */
 .wrapper {
   min-height: 100%;
   display: flex;
   flex-direction: column;
 }
+
 .content {
   flex: 1;
 }
 
+/* Estilos para la sección "why-us" */
 .why-us .box {
   padding: 50px 30px;
   box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
@@ -106,6 +131,7 @@ html {
   color: #fff;
 }
 
+/* Estilos para la sección "specials" */
 .specials {
   overflow: hidden;
 }
@@ -165,6 +191,12 @@ html {
   }
 }
 
+/* Estilos para el pie de página */
 footer {
   background-color: #333;
+}
+
+/* Estilos para el carrusel */
+.carouselExampleControls {
+  padding: 5%;
 }

@@ -7,6 +7,8 @@ import { UsuarioComponent } from './components/usuario/usuario.component';
 import { NegocioComponent } from './components/negocio/negocio.component';
 import { ShoppingComponent } from './components/shopping/shopping.component';
 import { ProductoComponent } from './components/producto/producto.component';
+import { PaymentComponent } from './components/shopping/payment/payment.component';
+import { ConfirmComponent } from './components/shopping/confirm/confirm.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -19,4 +21,6 @@ export const routes: Routes = [
   { path: 'negocio/edit/:id', component: NegocioComponent },
   { path: 'shopping', component: ShoppingComponent },
   { path: 'empresa/detalles/:id', component: ProductoComponent },
+  { path: 'payment', component: PaymentComponent },
+  { path: 'confirm', component: ConfirmComponent },
 ];

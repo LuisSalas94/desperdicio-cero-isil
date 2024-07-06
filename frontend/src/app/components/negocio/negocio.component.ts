@@ -43,8 +43,8 @@ export class NegocioComponent implements OnInit {
 
   ngOnInit(): void {
     Aos.init();
+    //*  Load id from localStorage if it exists
     this.service.findAll().subscribe((AllEmpresas) => {
-      console.log('ALl Empresas: ', AllEmpresas);
       this.empresas = AllEmpresas;
     });
 
@@ -54,13 +54,15 @@ export class NegocioComponent implements OnInit {
         this.service.findById(id).subscribe((res) => {
           this.empresa = res;
           this.id = res.id!;
-          console.log('Final ID :', this.id);
         });
+      }
+      if (id > 0) {
+        this.fetchEmpresaById(id);
       }
     });
 
     const userName = this.userService.getUsername();
-    console.log('Username from NEGOCION COMPONENT:', userName);
+
     if (userName && userName.length > 0) {
       const firstLetter = userName.charAt(0).toLowerCase();
       if (firstLetter === 'u') {
@@ -71,10 +73,16 @@ export class NegocioComponent implements OnInit {
     }
   }
 
+  fetchEmpresaById(id: number): void {
+    this.service.findById(id).subscribe((res) => {
+      this.empresa = res;
+      this.id = res.id!;
+    });
+  }
+
   onCreate() {
     this.service.create(this.empresa).subscribe(
       (item) => {
-        console.log('Empresa: ', item);
         Swal.fire({
           title: 'Empresa registrada',
           text: 'Empresa ' + this.empresa.nombre + ' registrada con éxito',

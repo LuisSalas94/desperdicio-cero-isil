@@ -61,4 +61,16 @@ export class ProductoService {
       headers,
     });
   }
+
+  /*http://localhost:8080/api/productos/empresa/id*/
+  getProductosByEmpresa(id: number): Observable<Producto[]> {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.get<Producto[]>(
+      `${BASIC_URL}/api/productos/empresa/${id}`,
+      {
+        headers,
+      }
+    );
+  }
 }

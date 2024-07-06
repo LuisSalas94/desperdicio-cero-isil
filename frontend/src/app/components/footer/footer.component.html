@@ -32,14 +32,44 @@
           <p class="text-white small">
             <a class="text-reset" routerLink="/empresa">Empresa</a>
           </p>
-          <!--    <p class="text-white small">
-            <a class="text-reset" routerLink="/producto">Producto</a>
-          </p> -->
+
           <p class="text-white small">
             <a class="text-reset" routerLink="/shopping">Shopping</a>
           </p>
         </div>
-        <!-- Grid column -->
+
+        <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4" *ngIf="isLoggedIn">
+          <h6 class="text-uppercase fw-bold mb-4 text-white">Redes Sociales</h6>
+          <ul class="list-unstyled">
+            <li class="mb-2">
+              <a
+                href="https://www.facebook.com/people/Desperdicio-Cero/61561582523707/"
+                target="_blank"
+                class="text-white text-decoration-none"
+              >
+                <i class="bi bi-facebook me-2"></i> Facebook
+              </a>
+            </li>
+            <li class="mb-2">
+              <a
+                href="https://x.com/i/flow/login?redirect_after_login=%2FDesperdici0Cero"
+                target="_blank"
+                class="text-white text-decoration-none"
+              >
+                <i class="bi bi-twitter me-2"></i> Twitter
+              </a>
+            </li>
+            <li class="mb-2">
+              <a
+                href="https://www.instagram.com"
+                target="_blank"
+                class="text-white text-decoration-none"
+              >
+                <i class="bi bi-instagram me-2"></i> Instagram
+              </a>
+            </li>
+          </ul>
+        </div>
 
         <!-- Grid column -->
         <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">

@@ -1,6 +1,7 @@
 package com.foodappbackend.foodapp.service;
 
 import com.foodappbackend.foodapp.entity.Empresa;
+import com.foodappbackend.foodapp.entity.Producto;
 
 import java.util.List;
 
@@ -14,4 +15,5 @@ public interface IEmpresaService {
     Empresa updateEmpresa(Empresa empresa);
 
     void deleteById(Long id);
+
 }

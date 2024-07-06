@@ -1,6 +1,7 @@
 package com.foodappbackend.foodapp.service.implementation;
 
 import com.foodappbackend.foodapp.entity.Empresa;
+import com.foodappbackend.foodapp.entity.Producto;
 import com.foodappbackend.foodapp.repository.EmpresaRepository;
 import com.foodappbackend.foodapp.service.IEmpresaService;
 import lombok.AllArgsConstructor;
