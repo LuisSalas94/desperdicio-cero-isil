@@ -162,7 +162,7 @@ GET /api/productos/empresa/{id}
 1. Clona este repositorio:
 
    ```bash
-   $ git clone https://github.com/TuUsuario/Desperdicio-Cero
+   https://github.com/LuisSalas94/desperdicio-cero-isil
    ```
 2. Configura la base de datos MySQL y ajusta las credenciales en la configuración de Spring Boot.
  ### Ejecución  Backend:
