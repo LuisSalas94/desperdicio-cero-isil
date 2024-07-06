@@ -20,6 +20,18 @@
     
 **Base de Datos:**
 - MySQL
+
+## Imagenes
+![1](https://github.com/LuisSalas94/desperdicio-cero-isil/assets/57297709/7a2ab483-8604-4ff4-875f-6efbe111eeb3)
+![2](https://github.com/LuisSalas94/desperdicio-cero-isil/assets/57297709/1576e941-433e-4a56-8c97-e81158d71a90)
+![3](https://github.com/LuisSalas94/desperdicio-cero-isil/assets/57297709/1c1e7f65-34c5-4ca1-98cb-79047377ff45)
+![4](https://github.com/LuisSalas94/desperdicio-cero-isil/assets/57297709/72c316f9-e539-48a1-a7a3-5b7a257e474e)
+![5](https://github.com/LuisSalas94/desperdicio-cero-isil/assets/57297709/246b8cc0-54df-4a63-ba1a-2339b40bb389)
+![6](https://github.com/LuisSalas94/desperdicio-cero-isil/assets/57297709/cee0df1a-4950-4277-8675-219a4400aac1)
+![7](https://github.com/LuisSalas94/desperdicio-cero-isil/assets/57297709/b6df48f6-caba-4b0d-a2a4-f07bfe1e42dc)
+![8](https://github.com/LuisSalas94/desperdicio-cero-isil/assets/57297709/3814228a-dc4a-44fa-ad45-e47894ac2b1e)
+![9](https://github.com/LuisSalas94/desperdicio-cero-isil/assets/57297709/d4440b1d-7fe6-43e1-ba2f-99c129fe9bbe)
+
   
 ## Características Principales 🌟
 
